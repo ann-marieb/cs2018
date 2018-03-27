@@ -1,5 +1,5 @@
-﻿/// Cat.cs
-/// Ann-Marie Bergström  ai2436 2018
+﻿/// Parrot.cs
+/// Ann-Marie Bergström  ai2436 2018-02-18
 
 using System;
 using System.Collections.Generic;
@@ -9,32 +9,31 @@ using System.Threading.Tasks;
 
 namespace Csharp2_assignment
 {
-    public class Cat : Mammal
+    class Parrot : Bird
     {
         private string colour;
 
         /// <summary>
         /// constructor
         /// </summary>
-        /// <param name="animalID"></param>
         /// <param name="name"></param>
         /// <param name="ageInt"></param>
         /// <param name="gender"></param>
-        /// <param name="noOfTeeth"></param>
+        /// <param name="wingSpan"></param>
         /// <param name="colour"></param>
-        public Cat(int animalID, string name, int ageInt, string gender, string noOfTeeth, string colour) 
-            : base (animalID, name, ageInt, gender, noOfTeeth)
+        public Parrot(string name, int ageInt, string gender, string wingSpan, string colour)
+            : base(name, ageInt, gender, wingSpan)
         {
             this.colour = colour;
-            foodScheduleObj = new FoodSchedule(new List<string>() { "Morning: Cat food", "Midday: Mouse", "Evening: Milk" });
+            foodScheduleObj = new FoodSchedule(new List<string>() { "Morning: Refill bird feeder" });
             //create food schedule object and fill with items specific for this animal
         }
 
         /// <summary>
         /// Copy constructor
         /// </summary>
-        /// <param name="other"> Cat to be copied.</param>
-        public Cat(Cat other) : base(other)
+        /// <param name="other">Copied parrot</param>
+        public Parrot(Parrot other) : base(other)
         {
             this.colour = other.colour;
         }
@@ -44,7 +43,7 @@ namespace Csharp2_assignment
         /// </summary>
         public override IAnimal CopyAnimal()
         {
-            return new Cat(this);
+            return new Parrot(this);
         }
 
         /// <summary>
@@ -52,7 +51,16 @@ namespace Csharp2_assignment
         /// </summary>
         public override EaterType GetEaterType()
         {
-            return EaterType.Carnivore;
+            return EaterType.Herbivore;
+        }
+
+        /// <summary>
+        /// Returns feedDescriptionList of the animal.
+        /// </summary>
+        public override List<string> GetFoodSchedule()
+        {
+            var fList = foodScheduleObj.ToStringList(); // get feedDescriptionList from FoodSchedule
+            return new List<string>(fList);
         }
 
         public override string ToString()

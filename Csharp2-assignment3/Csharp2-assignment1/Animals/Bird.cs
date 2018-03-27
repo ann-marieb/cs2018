@@ -1,4 +1,4 @@
-﻿/// Mammal.cs
+﻿/// Bird.cs
 /// Ann-Marie Bergström  ai2436 2018
 
 using System;
@@ -9,36 +9,35 @@ using System.Threading.Tasks;
 
 namespace Csharp2_assignment
 {
-    public abstract class Mammal : Animal
+    public abstract class Bird : Animal
     {
-        private string noOfTeeth;
+        private string wingSpan;
 
         /// <summary>
         /// constructor
         /// </summary>
-        /// <param name="newID"></param>
         /// <param name="name"></param>
         /// <param name="ageInt"></param>
         /// <param name="gender"></param>
-        /// <param name="noOfTeeth"></param>
-        public Mammal(int newID, string name, int ageInt, string gender, string noOfTeeth) 
-            : base(newID, name, ageInt, gender)
+        /// <param name="wingSpan"></param>
+        public Bird(string name, int ageInt, string gender, string wingSpan) 
+            : base(name, ageInt, gender)
         {
-            this.noOfTeeth = noOfTeeth;
+            this.wingSpan = wingSpan;
         }
 
         /// <summary>
         /// copy constructor
         /// </summary>
         /// <param name="other"></param>
-        public Mammal(Mammal other) : base(other)
+        public Bird(Bird other) : base(other)
         {
-            this.noOfTeeth = other.noOfTeeth;
+            this.wingSpan = other.wingSpan;
         }
-        
+
         public override string ToString()
         {
-            return $"{base.ToString()} Has {noOfTeeth} teeth. ";
+            return $"{base.ToString()} Wing span {wingSpan} cm. ";
         }
     }
 }

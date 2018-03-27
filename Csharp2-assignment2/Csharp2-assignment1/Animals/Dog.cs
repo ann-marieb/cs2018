@@ -1,5 +1,5 @@
 ﻿/// Dog.cs
-/// Ann-Marie Bergström  ai2436 2018-02-13
+/// Ann-Marie Bergström  ai2436 2018
 
 using System;
 using System.Collections.Generic;
@@ -12,9 +12,6 @@ namespace Csharp2_assignment
     public class Dog : Mammal
     {
         private string breed;
-
-        // Create a list of feeding items.
-        //List<string> feedDescriptionList = new List<string>() {"Morning: bones", "Midday: Dog food", "Evening: Sweets"};
 
         /// <summary>
         /// constructor
@@ -29,7 +26,8 @@ namespace Csharp2_assignment
             : base (animalID, name, ageInt, gender, noOfTeeth)
         {
             this.breed = breed;
-            foodScheduleObj = new FoodSchedule (new List<string>() { "Morning: bones", "Midday: Dog food", "Evening: Sweets"});
+            foodScheduleObj = new FoodSchedule(new List<string>() { "Morning: bones", "Midday: Dog food", "Evening: Sweets" });
+            //create food schedule object and fill with items specific for this animal
         }
 
         /// <summary>
@@ -42,18 +40,24 @@ namespace Csharp2_assignment
         }
 
         /// <summary>
-        /// Clone this animal. 
+        /// Copy this animal. 
         /// </summary>
-        /// <returns>a copy of this animal</returns>
-        public override IAnimal Clone()
+        public override IAnimal CopyAnimal()
         {
             return new Dog(this);
+        }
+
+        /// <summary>
+        /// Returns the eater type of this animal.
+        /// </summary>
+        public override EaterType GetEaterType()
+        {
+            return EaterType.Carnivore;
         }
 
         public override string ToString()
         {
             return $"{base.ToString()} Breed {breed}. ";
         }
-
     }
 }

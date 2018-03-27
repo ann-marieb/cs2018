@@ -18,7 +18,8 @@ namespace Csharp2_assignment
     /// </summary>
     public partial class MainForm : Form
     {
-        private AnimalManager animalManagerObj; //declare animalManagerObj as type AnimalManager
+        private AnimalManager animalManagerObj = new AnimalManager(); //declare and create animalManagerObj as type AnimalManager
+        private RecipeManager recipeManagerObj = new RecipeManager(); //declare and create recipeManagerObj as type RecipeManager
 
         /// <summary>
         /// Default constructor
@@ -27,7 +28,6 @@ namespace Csharp2_assignment
         {
             InitializeComponent();
             InitializeGui();
-            animalManagerObj = new AnimalManager(); // create animalManagerObj
         }
 
         #region Methods for user interface
@@ -171,9 +171,13 @@ namespace Csharp2_assignment
                     bool notUsed = int.TryParse(txtAge.Text, out int ageInt); //convert age from string to integer
                     var animal = AnimalMaker.MakeAnimal(txtName.Text, ageInt, lstGender.Text,
                         lstSpecies.Text, txtAnimalCatInfo.Text, txtSpeciesInfo.Text); //send info to AnimalMaker for creation of animal
-                    animalManagerObj.AddAnimal(animal); //send animal to AnimalManager to be added 
-                    UpdateAnimalList(); //display animal in Animal list
-                    InitializeGui(); //clear form
+                    bool addOK = animalManagerObj.AddAnimal(animal); //send animal to AnimalManager to be added 
+                    if (addOK)
+                    {
+                        UpdateAnimalList(); //display animal in Animal list
+                        InitializeGui(); //clear form
+                    }
+                    else MessageBox.Show("Animal not added");
                 }
             }
         }
@@ -202,6 +206,25 @@ namespace Csharp2_assignment
 
                     List<string> feedDescriptionList = animal.GetFoodSchedule(); // get food description list from Animal
                     lbxFoodSchedule.Items.AddRange(feedDescriptionList.ToArray()); // display food items 
+                }
+            }
+        }
+
+        private void btnDeleteAnimal_Click(object sender, EventArgs e)
+        {
+            var indices = lvAnimals.SelectedIndices;
+
+            if (indices.Count == 1) // if only one animal is selected
+            {
+                var index = indices[0];
+
+                bool indexOK = animalManagerObj.ValidateIndex(index); // validate index
+
+                if (indexOK)
+                {
+                    animalManagerObj.RemoveItem(index);
+                    UpdateAnimalList(); //display animal in Animal list
+                    InitializeGui(); //clear form
                 }
             }
         }
@@ -290,7 +313,24 @@ namespace Csharp2_assignment
                 return (string.CompareOrdinal(a1.Name, a2.Name));
             }
         }
+
         #endregion
 
+        /// <summary>
+        /// When button Recipes is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRecipes_Click(object sender, EventArgs e)
+        {
+            //create an instance of Recipeform
+            RecipeForm recipeFormObj = new RecipeForm();
+            recipeFormObj.RecipeManager = recipeManagerObj; //give recipeFormObj access to recipeManagerObj
+            DialogResult dialogResult = recipeFormObj.ShowDialog();
+            //if (dialogResult == DialogResult.OK)
+            //{
+            //    recipeObj = recipeObj.Recipe; //
+            //}
+        }
     }
 }

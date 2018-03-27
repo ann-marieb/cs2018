@@ -13,9 +13,6 @@ namespace Csharp2_assignment
     {
         private string colour;
 
-        // Create a list of feeding items.
-        List<string> feedDescriptionList = new List<string>();
-
         /// <summary>
         /// constructor
         /// </summary>
@@ -29,9 +26,10 @@ namespace Csharp2_assignment
             : base(animalID, name, ageInt, gender, wingSpan)
         {
             this.colour = colour;
-            species = "parrot";
+            foodScheduleObj = new FoodSchedule(new List<string>() { "Morning: Refill bird feeder" });
+            //create food schedule object and fill with items specific for this animal
         }
-        
+
         /// <summary>
         /// Copy constructor
         /// </summary>
@@ -42,10 +40,9 @@ namespace Csharp2_assignment
         }
 
         /// <summary>
-        /// Clone this animal. 
+        /// Copy this animal. 
         /// </summary>
-        /// <returns>a copy of this animal</returns>
-        public override IAnimal Clone()
+        public override IAnimal CopyAnimal()
         {
             return new Parrot(this);
         }
@@ -53,7 +50,6 @@ namespace Csharp2_assignment
         /// <summary>
         /// Returns the eater type of this animal.
         /// </summary>
-        /// <returns>the eater type of this animal</returns>
         public override EaterType GetEaterType()
         {
             return EaterType.Herbivore;
@@ -63,13 +59,5 @@ namespace Csharp2_assignment
         {
             return $"{base.ToString()} Colour {colour}. ";
         }
-
-        //public override List<string> GetFoodSchedule()
-        //{
-        //    // Add feeding items to the list.
-        //    feedDescriptionList.Add("Morning: Refill bird feeder");
-
-        //    return feedDescriptionList;
-        //}
     }
 }

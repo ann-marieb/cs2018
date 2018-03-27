@@ -16,14 +16,13 @@ namespace Csharp2_assignment
         /// <summary>
         /// constructor
         /// </summary>
-        /// <param name="animalID"></param>
         /// <param name="name"></param>
         /// <param name="ageInt"></param>
         /// <param name="gender"></param>
         /// <param name="wingSpan"></param>
         /// <param name="flyingSpeed"></param>
-        public Falcon(int animalID, string name, int ageInt, string gender, string wingSpan, string flyingSpeed)
-            : base(animalID, name, ageInt, gender, wingSpan)
+        public Falcon(string name, int ageInt, string gender, string wingSpan, string flyingSpeed)
+            : base(name, ageInt, gender, wingSpan)
         {
             this.flyingSpeed = flyingSpeed;
             foodScheduleObj = new FoodSchedule(new List<string>() { "Morning: Rabbit" });
@@ -53,6 +52,16 @@ namespace Csharp2_assignment
         public override EaterType GetEaterType()
         {
             return EaterType.Carnivore;
+        }
+
+
+        /// <summary>
+        /// Returns feedDescriptionList of the animal.
+        /// </summary>
+        public override List<string> GetFoodSchedule()
+        {
+            var fList = foodScheduleObj.ToStringList(); // get feedDescriptionList from FoodSchedule
+            return new List<string>(fList);
         }
 
         public override string ToString()

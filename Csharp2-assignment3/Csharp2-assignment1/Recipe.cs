@@ -1,0 +1,68 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Csharp2_assignment
+{
+    public class Recipe
+    {
+        private IListManager<string> ingredientsList = new ListManager<string>();
+
+        public string RecipeName { get; internal set; } // ???
+
+        public Recipe()
+        {
+
+        }
+
+        /// <summary>
+        /// add the ingredient to ingredientList
+        /// </summary>
+        public void AddIngredient(string item)
+        {
+            ingredientsList.AddItem(item);
+        }
+
+        /// <summary>
+        /// Get the ingredient at specified index from ingredientList
+        /// </summary>
+        public string GetIngredientAt(int index)
+        {
+            return (ingredientsList.GetItem(index));
+        }
+
+        /// <summary>
+        /// change ingredient text at specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public void ChangeIngredientAt(int index, string value)
+        {
+            ingredientsList.ChangeItem(index, value);
+        }
+
+        /// <summary>
+        /// remove the ingredient from ingredientList
+        /// </summary>
+        public void DeleteIngredientAt(int index)
+        {
+            ingredientsList.RemoveItem(index);
+        }
+
+        public override string ToString()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// return ingredients list as string array
+        /// </summary>
+        public string[] ToStringArray()
+        {
+            return ingredientsList.ToStringArray();
+        }
+    }
+}

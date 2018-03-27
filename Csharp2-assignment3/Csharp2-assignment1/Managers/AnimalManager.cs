@@ -12,43 +12,45 @@ namespace Csharp2_assignment
     /// <summary>
     /// Handles animal list
     /// </summary>
-    public class AnimalManager
+    public class AnimalManager : ListManager<IAnimal>
     {
-        private List<IAnimal> animalList; //declare list of animalList
+        private static int nextAnimalID = 100; //unique id for each animal
+        //private List<IAnimal> animalList; //declare list of animalList
 
         /// <summary>
         /// Default constructor
         /// </summary>
-        public AnimalManager()
+        public AnimalManager() : base ()
         {
-            animalList = new List<IAnimal>(); //create list of animals 
+            //animalList = new List<IAnimal>(); //create list of animals 
         }
 
         #region Properties
         /// <summary>
         /// Data to fill a ListView, one animal per item in the list.
         /// </summary>
-        public IEnumerable<string[]> AnimalsAsRows => animalList.Select(animal => animal.RowStrings).ToList();
+        public IEnumerable<string[]> AnimalsAsRows => this.Select(animal => animal.RowStrings).ToList();
         #endregion
 
         #region Methods
+
         /// <summary>
-        /// Add animal to list
+        /// Create animal ID
         /// </summary>
-        /// <param name="animal"></param>
-        internal void AddAnimal(IAnimal animal)
+        /// <returns>animal ID</returns>
+        private static int NewId()
         {
-            animalList.Add(animal);
+            return nextAnimalID++;
         }
 
         /// <summary>
-        /// Check if index is valid.
+        /// Add animal to list
         /// </summary>
-        /// <param name="index"></param>
-        public bool ValidateIndex(int index)
+        /// <param name="animalIn"></param>
+        internal bool AddAnimal(IAnimal animalIn)
         {
-            if (index < animalList.Count && index >= 0) return true; // TODO: vänd
-            else return false;
+            animalIn.AnimalID  = NewId();
+            return AddItem(animalIn); //AddItem in ListManager
         }
 
         /// <summary>
@@ -58,15 +60,15 @@ namespace Csharp2_assignment
         /// <returns></returns>
         public IAnimal GetAnimal(int index)
         {
-            var animal = animalList[index]; //get animal from list
+            var animal = GetItem(index); //get animal from itemlist
             var animalCopy = animal.CopyAnimal(); // copy animal
             return animalCopy; //return animal
         }
 
-        public void Sort(IComparer<IAnimal> comparer)
-        {
-            animalList.Sort(comparer);
-        }
+        //public void Sort(IComparer<IAnimal> comparer)
+        //{
+        //    animalList.Sort(comparer);
+        //}
         #endregion
     }
 }

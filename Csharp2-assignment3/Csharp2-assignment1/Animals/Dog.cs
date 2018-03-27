@@ -1,4 +1,4 @@
-﻿/// Cat.cs
+﻿/// Dog.cs
 /// Ann-Marie Bergström  ai2436 2018
 
 using System;
@@ -6,37 +6,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+  
 namespace Csharp2_assignment
 {
-    public class Cat : Mammal
+    public class Dog : Mammal
     {
-        private string colour;
+        private string breed;
 
         /// <summary>
         /// constructor
         /// </summary>
-        /// <param name="animalID"></param>
         /// <param name="name"></param>
         /// <param name="ageInt"></param>
         /// <param name="gender"></param>
         /// <param name="noOfTeeth"></param>
-        /// <param name="colour"></param>
-        public Cat(int animalID, string name, int ageInt, string gender, string noOfTeeth, string colour) 
-            : base (animalID, name, ageInt, gender, noOfTeeth)
+        /// <param name="breed"></param>
+        public Dog(string name, int ageInt, string gender, string noOfTeeth, string breed) 
+            : base (name, ageInt, gender, noOfTeeth)
         {
-            this.colour = colour;
-            foodScheduleObj = new FoodSchedule(new List<string>() { "Morning: Cat food", "Midday: Mouse", "Evening: Milk" });
+            this.breed = breed;
+            foodScheduleObj = new FoodSchedule(new List<string>() { "Morning: bones", "Midday: Dog food", "Evening: Sweets" });
             //create food schedule object and fill with items specific for this animal
         }
 
         /// <summary>
         /// Copy constructor
         /// </summary>
-        /// <param name="other"> Cat to be copied.</param>
-        public Cat(Cat other) : base(other)
+        /// <param name="other"> Bear to be copied.</param>
+        public Dog(Dog other) : base(other)
         {
-            this.colour = other.colour;
+            this.breed = other.breed;
         }
 
         /// <summary>
@@ -44,7 +43,7 @@ namespace Csharp2_assignment
         /// </summary>
         public override IAnimal CopyAnimal()
         {
-            return new Cat(this);
+            return new Dog(this);
         }
 
         /// <summary>
@@ -55,9 +54,18 @@ namespace Csharp2_assignment
             return EaterType.Carnivore;
         }
 
+        /// <summary>
+        /// Returns feedDescriptionList of the animal.
+        /// </summary>
+        public override List<string> GetFoodSchedule()
+        {
+            var fList = foodScheduleObj.ToStringList(); // get feedDescriptionList from FoodSchedule
+            return new List<string>(fList);
+        }
+
         public override string ToString()
         {
-            return $"{base.ToString()} Colour {colour}. ";
+            return $"{base.ToString()} Breed {breed}. ";
         }
     }
 }

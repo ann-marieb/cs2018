@@ -15,8 +15,6 @@ namespace Csharp2_assignment
     /// </summary>
     public class AnimalMaker
     {
-        private static int animalID = 100; //unique id for each animal
-
         #region Info to be displayed in MainForm based on input.
 
         /// <summary>
@@ -196,14 +194,6 @@ namespace Csharp2_assignment
             return errorText;
         }
 
-        /// <summary>
-        /// Create animal ID
-        /// </summary>
-        /// <returns>animal ID</returns>
-        private static int NewId()
-        {
-            return animalID++;
-        }
 
         /// <summary>
         /// Create animal
@@ -217,35 +207,35 @@ namespace Csharp2_assignment
         /// <returns>animal</returns>
         internal static IAnimal MakeAnimal(string name, int ageInt, string gender, string species, string text1, string text2)
         {
-            IAnimal animal; //declare animal
+            IAnimal animalObj; //declare animal
 
             switch (species)
             {
                 case "dog":
                     {
-                      animal = new Dog(NewId(), name, ageInt, gender, text1, text2);
+                      animalObj = new Dog(name, ageInt, gender, text1, text2);
                     }
                     break;
                 case "cat":
                     {
-                        animal = new Cat(NewId(), name, ageInt, gender, text1, text2);
+                        animalObj = new Cat(name, ageInt, gender, text1, text2);
                     }
                     break;
                 case "parrot":
                     {
-                        animal = new Parrot(NewId(), name, ageInt, gender, text1, text2);
+                        animalObj = new Parrot(name, ageInt, gender, text1, text2);
                     }
                     break;
                 case "falcon":
                     {
-                        animal = new Falcon(NewId(), name, ageInt, gender, text1, text2);
+                        animalObj = new Falcon(name, ageInt, gender, text1, text2);
                     }
                     break;
 
                 default:
                     throw new NotImplementedException();
             }
-            return animal;
+            return animalObj;
         }
 
         /// <summary>
@@ -254,9 +244,9 @@ namespace Csharp2_assignment
         public static List<IAnimal> makeSomeAnimals()
         {
             var some = new List<IAnimal>();
-            some.Add(new Dog(108,"Teddy", 5, "Male", "13", "dobermann"));
-            some.Add(new Cat(102, "Ada", 4, "Female", "12", "tabby"));
-            some.Add(new Falcon(107, "Beda", 4, "Female", "14", "53"));
+            some.Add(new Dog("Teddy", 5, "Male", "13", "dobermann"));
+            some.Add(new Cat("Ada", 4, "Female", "12", "tabby"));
+            some.Add(new Falcon("Beda", 4, "Female", "14", "53"));
             return some;
         }
     }

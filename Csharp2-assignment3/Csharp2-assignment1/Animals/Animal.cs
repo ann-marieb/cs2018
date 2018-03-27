@@ -24,13 +24,11 @@ namespace Csharp2_assignment
         /// <summary>
         /// constructor
         /// </summary>
-        /// <param name="animalID"></param>
         /// <param name="name"></param>
         /// <param name="ageInt"></param>
         /// <param name="gender"></param>
-        public Animal(int animalID, string name, int ageInt, string gender)
+        public Animal(string name, int ageInt, string gender)
         {
-            this.animalID = animalID;
             this.name = name;
             this.ageInt = ageInt;
             this.gender = gender;
@@ -52,6 +50,7 @@ namespace Csharp2_assignment
         #endregion
 
         #region Properties
+ 
         /// <summary>
         /// The name of the animal
         /// </summary>
@@ -74,6 +73,7 @@ namespace Csharp2_assignment
         public int AnimalID
         {
             get => animalID;
+            set => animalID = value;
         }
         #endregion
 
@@ -91,11 +91,8 @@ namespace Csharp2_assignment
         /// <summary>
         /// Returns feedDescriptionList of the animal.
         /// </summary>
-        public List<string> GetFoodSchedule()
-        {
-            var fList = foodScheduleObj.ToStringList(); // get feedDescriptionList from FoodSchedule
-            return new List<string>(fList);
-        }
+        public abstract List<string> GetFoodSchedule();
+
 
         /// <summary>
         /// Returns the species of the animal.

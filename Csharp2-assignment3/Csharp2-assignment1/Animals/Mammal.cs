@@ -16,13 +16,12 @@ namespace Csharp2_assignment
         /// <summary>
         /// constructor
         /// </summary>
-        /// <param name="newID"></param>
         /// <param name="name"></param>
         /// <param name="ageInt"></param>
         /// <param name="gender"></param>
         /// <param name="noOfTeeth"></param>
-        public Mammal(int newID, string name, int ageInt, string gender, string noOfTeeth) 
-            : base(newID, name, ageInt, gender)
+        public Mammal(string name, int ageInt, string gender, string noOfTeeth) 
+            : base(name, ageInt, gender)
         {
             this.noOfTeeth = noOfTeeth;
         }

@@ -46,6 +46,7 @@
             this.gbxSpecies = new System.Windows.Forms.GroupBox();
             this.btnAddAnimal = new System.Windows.Forms.Button();
             this.txtSpeciesInfo = new System.Windows.Forms.TextBox();
+            this.btnDeleteAnimal = new System.Windows.Forms.Button();
             this.lblSpeciesInfo = new System.Windows.Forms.Label();
             this.lvAnimals = new System.Windows.Forms.ListView();
             this.gbxFeedingSchedule = new System.Windows.Forms.GroupBox();
@@ -55,6 +56,8 @@
             this.btnSortSpecies = new System.Windows.Forms.Button();
             this.btnSortName = new System.Windows.Forms.Button();
             this.btnID = new System.Windows.Forms.Button();
+            this.btnRecipes = new System.Windows.Forms.Button();
+            this.btnStaff = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.gbxAnimalCategory.SuspendLayout();
             this.gbxSpecies.SuspendLayout();
@@ -219,8 +222,8 @@
             // 
             // btnAddAnimal
             // 
-            this.btnAddAnimal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnAddAnimal.Location = new System.Drawing.Point(428, 24);
+            this.btnAddAnimal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnAddAnimal.Location = new System.Drawing.Point(438, 21);
             this.btnAddAnimal.Name = "btnAddAnimal";
             this.btnAddAnimal.Size = new System.Drawing.Size(95, 46);
             this.btnAddAnimal.TabIndex = 14;
@@ -235,6 +238,17 @@
             this.txtSpeciesInfo.Size = new System.Drawing.Size(286, 22);
             this.txtSpeciesInfo.TabIndex = 13;
             // 
+            // btnDeleteAnimal
+            // 
+            this.btnDeleteAnimal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnDeleteAnimal.Location = new System.Drawing.Point(450, 346);
+            this.btnDeleteAnimal.Name = "btnDeleteAnimal";
+            this.btnDeleteAnimal.Size = new System.Drawing.Size(95, 46);
+            this.btnDeleteAnimal.TabIndex = 15;
+            this.btnDeleteAnimal.Text = "Delete animal";
+            this.btnDeleteAnimal.UseVisualStyleBackColor = false;
+            this.btnDeleteAnimal.Click += new System.EventHandler(this.btnDeleteAnimal_Click);
+            // 
             // lblSpeciesInfo
             // 
             this.lblSpeciesInfo.AutoSize = true;
@@ -248,7 +262,7 @@
             // 
             this.lvAnimals.FullRowSelect = true;
             this.lvAnimals.GridLines = true;
-            this.lvAnimals.Location = new System.Drawing.Point(12, 383);
+            this.lvAnimals.Location = new System.Drawing.Point(12, 394);
             this.lvAnimals.MultiSelect = false;
             this.lvAnimals.Name = "lvAnimals";
             this.lvAnimals.Size = new System.Drawing.Size(922, 227);
@@ -325,11 +339,35 @@
             this.btnID.UseVisualStyleBackColor = true;
             this.btnID.Click += new System.EventHandler(this.btnID_Click);
             // 
+            // btnRecipes
+            // 
+            this.btnRecipes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnRecipes.Location = new System.Drawing.Point(706, 346);
+            this.btnRecipes.Name = "btnRecipes";
+            this.btnRecipes.Size = new System.Drawing.Size(95, 46);
+            this.btnRecipes.TabIndex = 15;
+            this.btnRecipes.Text = "Recipes";
+            this.btnRecipes.UseVisualStyleBackColor = false;
+            this.btnRecipes.Click += new System.EventHandler(this.btnRecipes_Click);
+            // 
+            // btnStaff
+            // 
+            this.btnStaff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnStaff.Location = new System.Drawing.Point(829, 346);
+            this.btnStaff.Name = "btnStaff";
+            this.btnStaff.Size = new System.Drawing.Size(95, 46);
+            this.btnStaff.TabIndex = 16;
+            this.btnStaff.Text = "Staff";
+            this.btnStaff.UseVisualStyleBackColor = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1506, 664);
+            this.Controls.Add(this.btnStaff);
+            this.Controls.Add(this.btnRecipes);
+            this.Controls.Add(this.btnDeleteAnimal);
             this.Controls.Add(this.btnID);
             this.Controls.Add(this.btnSortName);
             this.Controls.Add(this.btnSortSpecies);
@@ -381,6 +419,9 @@
         private System.Windows.Forms.Button btnSortName;
         private System.Windows.Forms.Button btnPop;
         private System.Windows.Forms.Button btnID;
+        private System.Windows.Forms.Button btnDeleteAnimal;
+        private System.Windows.Forms.Button btnRecipes;
+        private System.Windows.Forms.Button btnStaff;
     }
 }
 

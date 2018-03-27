@@ -1,5 +1,5 @@
 ﻿/// Bird.cs
-/// Ann-Marie Bergström  ai2436 2018-02-13
+/// Ann-Marie Bergström  ai2436 2018
 
 using System;
 using System.Collections.Generic;
