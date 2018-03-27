@@ -144,7 +144,6 @@
             // 
             // btnAddRecipe
             // 
-            this.btnAddRecipe.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnAddRecipe.Location = new System.Drawing.Point(76, 345);
             this.btnAddRecipe.Name = "btnAddRecipe";
             this.btnAddRecipe.Size = new System.Drawing.Size(157, 43);

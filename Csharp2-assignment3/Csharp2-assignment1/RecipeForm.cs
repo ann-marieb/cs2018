@@ -22,7 +22,10 @@ namespace Csharp2_assignment
         public RecipeManager RecipeManager
         {
             get => recipeManagerObj;
-            set => recipeManagerObj = value;
+            set {
+                recipeManagerObj = value; //value = recipeManagerObj from Mainform
+                UpdateRecipeList();
+            }
         }
 
         /// <summary>
@@ -40,7 +43,7 @@ namespace Csharp2_assignment
         /// </summary>
         private void InitializeGui()
         {
-            UpdateRecipeList();
+            //UpdateRecipeList();
 
             toolTipIngredient.SetToolTip(tbxIngredient, "Example: 2 dl of milk"); //set tool tip at ingredients textbox
         }
@@ -129,9 +132,9 @@ namespace Csharp2_assignment
         /// </summary>
         private void UpdateRecipeList()
         {
-            //List recipeListStrings = recipeManagerObj.ListToString(recipeList);
-            //lbxRecipes.Items.Clear();
-            //lbxRecipes.Items.AddRange(recipeListStrings);
+            
+            lbxRecipes.Items.Clear();
+            lbxRecipes.Items.AddRange(recipeManagerObj.ToStringArray());
 
             //lvRecipes.Columns.Clear(); //clear recipes list
             //lvRecipes.Columns.Add("NAME", 100, HorizontalAlignment.Center);

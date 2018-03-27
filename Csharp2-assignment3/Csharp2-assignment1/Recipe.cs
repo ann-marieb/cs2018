@@ -10,7 +10,7 @@ namespace Csharp2_assignment
     {
         private IListManager<string> ingredientsList = new ListManager<string>();
 
-        public string RecipeName { get; internal set; } // ???
+        public string RecipeName { get; internal set; } //
 
         public Recipe()
         {
@@ -54,7 +54,7 @@ namespace Csharp2_assignment
 
         public override string ToString()
         {
-            throw new NotImplementedException();
+            return RecipeName + ": " + string.Join(", ", ingredientsList) + ".";
         }
 
         /// <summary>
