@@ -13,14 +13,13 @@ namespace Csharp2_assignment
     {
         //int Count { get; }
 
-        bool AddItem(T aType);
+        bool AddItem(T anItem);
 
         T GetItem(int index);
 
         bool ChangeItem(int index, T anItem);
 
-        void RemoveItem(int index);
-
+        bool RemoveItem(int index);
 
         List<string> ToStringList();
 

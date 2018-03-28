@@ -49,6 +49,8 @@ namespace Csharp2_assignment
             gbxSpecies.Visible = false; //hide groupbox
             txtSpeciesInfo.Text = string.Empty; //clear textbox
             InitAnimalList(); //initialize Animal list
+            tbxEaterType.Clear();
+            lbxFoodSchedule.Items.Clear();
         }
 
         /// <summary>

@@ -41,8 +41,8 @@ namespace Csharp2_assignment
         /// <param name="index"></param>
         public T GetItem(int index)
         {
-            var item = itemList[index]; //get item from list
-            return item; //return item
+                var item = itemList[index]; //get item from list
+                return item; //return item
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Csharp2_assignment
         /// <param name="anItem"></param>
         public bool ChangeItem(int index, T anItem)
         {
-            if (anItem == null) return false;
+            if ((anItem == null) || !ValidateIndex(index)) return false;
             else
             {
                 itemList.RemoveAt(index);
@@ -64,9 +64,14 @@ namespace Csharp2_assignment
         /// Delete the item at the given index in the list of items.
         /// </summary>
         /// <param name="index"></param>
-        public void RemoveItem(int index)
+        public bool RemoveItem(int index)
         {
-            itemList.RemoveAt(index);
+            if (ValidateIndex(index))
+            {
+                itemList.RemoveAt(index);
+                return true;
+            }
+            else return false;
         }
 
         #region support functions
