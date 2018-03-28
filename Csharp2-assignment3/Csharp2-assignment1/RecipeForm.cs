@@ -13,20 +13,7 @@ namespace Csharp2_assignment
     public partial class RecipeForm : Form
     {
         Recipe recipeObj = new Recipe(); //declare and create recipeObj as type Recipe
-
         RecipeManager recipeManagerObj; //declare received recipeManagerObj
-
-        /// <summary>
-        /// property for access to recipeManagerObj of MainForm
-        /// </summary>
-        public RecipeManager RecipeManager
-        {
-            get => recipeManagerObj;
-            set {
-                recipeManagerObj = value; //value = recipeManagerObj from Mainform
-                UpdateRecipeList();
-            }
-        }
 
         /// <summary>
         /// default constructor
@@ -35,7 +22,19 @@ namespace Csharp2_assignment
         {
             InitializeComponent();
             InitializeGui();
-            UpdateGui();
+        }
+
+        /// <summary>
+        /// property for access to recipeManagerObj from MainForm
+        /// </summary>
+        public RecipeManager RecipeManager
+        {
+            get => recipeManagerObj;
+            set
+            {
+                recipeManagerObj = value; //value = recipeManagerObj from Mainform
+                UpdateRecipeList(); // display recipe list if there is one 
+            }
         }
 
         /// <summary>
@@ -43,22 +42,31 @@ namespace Csharp2_assignment
         /// </summary>
         private void InitializeGui()
         {
-            //UpdateRecipeList();
-
+            tbxRecipeName.Clear(); // clear textbox    
+            lstIngredients.Items.Clear(); // clear ingredients list
+            lbxRecipes.Items.Clear(); // clear recipe list
             toolTipIngredient.SetToolTip(tbxIngredient, "Example: 2 dl of milk"); //set tool tip at ingredients textbox
         }
 
         /// <summary>
-        /// update user interface
+        /// update GUI ingredients list
         /// </summary>
-        private void UpdateGui()
+        private void UpdateIngredientsList()
         {
             lstIngredients.Items.Clear(); //clear ingredients list before writing new list
-
             lstIngredients.Items.AddRange(recipeObj.ToStringArray()); //write ingredients list
 
             tbxIngredient.Clear(); // Clear ingredient textbox to enable new input
             tbxIngredient.Focus(); //cursor back to ingredient textbox
+        }
+
+        /// <summary>
+        /// Update GUI recipe list
+        /// </summary>
+        private void UpdateRecipeList()
+        {
+            lbxRecipes.Items.Clear();
+            lbxRecipes.Items.AddRange(recipeManagerObj.ToStringArray());
         }
 
         /// <summary>
@@ -74,7 +82,7 @@ namespace Csharp2_assignment
                 return;
             }
             recipeObj.AddIngredient(tbxIngredient.Text.Trim());
-            UpdateGui();
+            UpdateIngredientsList();
         }
 
         /// <summary>
@@ -85,7 +93,7 @@ namespace Csharp2_assignment
         private void lstIngredients_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = lstIngredients.SelectedIndex;// index of selected ingredient
-            tbxIngredient.Text = recipeObj.GetIngredientAt(index);
+            tbxIngredient.Text = recipeObj.GetIngredientAt(index); // write ingredient to textbox
         }
 
         /// <summary>
@@ -97,7 +105,7 @@ namespace Csharp2_assignment
         {
             int index = lstIngredients.SelectedIndex;// index of selected ingredient
             recipeObj.ChangeIngredientAt(index, tbxIngredient.Text.Trim());
-            UpdateGui();
+            UpdateIngredientsList();
         }
 
         /// <summary>
@@ -109,10 +117,8 @@ namespace Csharp2_assignment
         {
             int index = lstIngredients.SelectedIndex;// index of selected ingredient
             recipeObj.DeleteIngredientAt(index);
-            UpdateGui();
+            UpdateIngredientsList();
         }
-
-
 
         private void btnAddRecipe_Click(object sender, EventArgs e)
         {
@@ -124,22 +130,10 @@ namespace Csharp2_assignment
             recipeObj.RecipeName = tbxRecipeName.Text.Trim();
             bool addOK = recipeManagerObj.AddItem(recipeObj);
             InitializeGui();
-            UpdateRecipeList();
-            
-        }
-
-        /// <summary>
-        /// Update recipe list
-        /// </summary>
-        private void UpdateRecipeList()
-        {
-            
-            lbxRecipes.Items.Clear();
             lbxRecipes.Items.AddRange(recipeManagerObj.ToStringArray());
+            recipeObj = new Recipe(); //create new recipeObj as type Recipe
 
-            //lvRecipes.Columns.Clear(); //clear recipes list
-            //lvRecipes.Columns.Add("NAME", 100, HorizontalAlignment.Center);
-            //lvRecipes.Columns.Add("INGREDIENTS", 250, HorizontalAlignment.Center);
         }
+
     }
 }

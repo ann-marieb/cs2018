@@ -38,7 +38,7 @@
             this.btnAddIngr = new System.Windows.Forms.Button();
             this.tbxIngredient = new System.Windows.Forms.TextBox();
             this.lblIngredient = new System.Windows.Forms.Label();
-            this.btnCancelRecipe = new System.Windows.Forms.Button();
+            this.btnCloseRecipe = new System.Windows.Forms.Button();
             this.btnAddRecipe = new System.Windows.Forms.Button();
             this.toolTipIngredient = new System.Windows.Forms.ToolTip(this.components);
             this.lbxRecipes = new System.Windows.Forms.ListBox();
@@ -132,15 +132,15 @@
             this.lblIngredient.TabIndex = 0;
             this.lblIngredient.Text = "Ingredient";
             // 
-            // btnCancelRecipe
+            // btnCloseRecipe
             // 
-            this.btnCancelRecipe.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelRecipe.Location = new System.Drawing.Point(244, 345);
-            this.btnCancelRecipe.Name = "btnCancelRecipe";
-            this.btnCancelRecipe.Size = new System.Drawing.Size(157, 43);
-            this.btnCancelRecipe.TabIndex = 8;
-            this.btnCancelRecipe.Text = "Cancel recipe";
-            this.btnCancelRecipe.UseVisualStyleBackColor = true;
+            this.btnCloseRecipe.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCloseRecipe.Location = new System.Drawing.Point(244, 345);
+            this.btnCloseRecipe.Name = "btnCloseRecipe";
+            this.btnCloseRecipe.Size = new System.Drawing.Size(157, 43);
+            this.btnCloseRecipe.TabIndex = 8;
+            this.btnCloseRecipe.Text = "Close";
+            this.btnCloseRecipe.UseVisualStyleBackColor = true;
             // 
             // btnAddRecipe
             // 
@@ -167,7 +167,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1172, 414);
             this.Controls.Add(this.lbxRecipes);
-            this.Controls.Add(this.btnCancelRecipe);
+            this.Controls.Add(this.btnCloseRecipe);
             this.Controls.Add(this.btnAddRecipe);
             this.Controls.Add(this.gbxIngredients);
             this.Controls.Add(this.tbxRecipeName);
@@ -192,7 +192,7 @@
         private System.Windows.Forms.Button btnAddIngr;
         private System.Windows.Forms.TextBox tbxIngredient;
         private System.Windows.Forms.Label lblIngredient;
-        private System.Windows.Forms.Button btnCancelRecipe;
+        private System.Windows.Forms.Button btnCloseRecipe;
         private System.Windows.Forms.Button btnAddRecipe;
         private System.Windows.Forms.ToolTip toolTipIngredient;
         private System.Windows.Forms.ListBox lbxRecipes;
