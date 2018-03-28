@@ -54,7 +54,8 @@ namespace Csharp2_assignment
 
         public override string ToString()
         {
-            return RecipeName + ": " + string.Join(", ", ingredientsList) + ".";
+            var ingredients = string.Join(", ", ingredientsList.ToStringList());
+            return RecipeName + ": " + ingredients + ".";
         }
 
         /// <summary>

@@ -124,6 +124,7 @@ namespace Csharp2_assignment
             recipeObj.RecipeName = tbxRecipeName.Text.Trim();
             bool addOK = recipeManagerObj.AddItem(recipeObj);
             InitializeGui();
+            UpdateRecipeList();
             
         }
 
