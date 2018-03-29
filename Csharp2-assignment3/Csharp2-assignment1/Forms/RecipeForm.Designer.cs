@@ -122,6 +122,7 @@
             this.tbxIngredient.Name = "tbxIngredient";
             this.tbxIngredient.Size = new System.Drawing.Size(355, 22);
             this.tbxIngredient.TabIndex = 1;
+            this.tbxIngredient.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxIngredient_KeyPress);
             // 
             // lblIngredient
             // 
@@ -173,7 +174,7 @@
             this.Controls.Add(this.tbxRecipeName);
             this.Controls.Add(this.lblRecipeName);
             this.Name = "RecipeForm";
-            this.Text = "RecipeForm";
+            this.Text = "Recipes";
             this.gbxIngredients.ResumeLayout(false);
             this.gbxIngredients.PerformLayout();
             this.ResumeLayout(false);

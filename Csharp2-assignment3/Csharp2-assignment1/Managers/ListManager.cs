@@ -16,6 +16,9 @@ namespace Csharp2_assignment
 
         //public int Count { get; }
 
+        /// <summary>
+        /// default constructor
+        /// </summary>
         public ListManager()
         {
             itemList = new List<T>(); //create list of items

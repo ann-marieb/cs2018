@@ -1,4 +1,7 @@
-﻿using System;
+﻿/// Recipe.cs
+/// Ann-Marie Bergström  ai2436 2018
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +13,11 @@ namespace Csharp2_assignment
     {
         private IListManager<string> ingredientsList = new ListManager<string>();
 
-        public string RecipeName { get; internal set; } //
+        public string RecipeName { get; internal set; }
 
+        /// <summary>
+        /// default constructor
+        /// </summary>
         public Recipe()
         {
 

@@ -46,8 +46,8 @@
             this.gbxSpecies = new System.Windows.Forms.GroupBox();
             this.btnAddAnimal = new System.Windows.Forms.Button();
             this.txtSpeciesInfo = new System.Windows.Forms.TextBox();
-            this.btnDeleteAnimal = new System.Windows.Forms.Button();
             this.lblSpeciesInfo = new System.Windows.Forms.Label();
+            this.btnDeleteAnimal = new System.Windows.Forms.Button();
             this.lvAnimals = new System.Windows.Forms.ListView();
             this.gbxFeedingSchedule = new System.Windows.Forms.GroupBox();
             this.lbxFoodSchedule = new System.Windows.Forms.ListBox();
@@ -238,6 +238,15 @@
             this.txtSpeciesInfo.Size = new System.Drawing.Size(286, 22);
             this.txtSpeciesInfo.TabIndex = 13;
             // 
+            // lblSpeciesInfo
+            // 
+            this.lblSpeciesInfo.AutoSize = true;
+            this.lblSpeciesInfo.Location = new System.Drawing.Point(13, 22);
+            this.lblSpeciesInfo.Name = "lblSpeciesInfo";
+            this.lblSpeciesInfo.Size = new System.Drawing.Size(38, 17);
+            this.lblSpeciesInfo.TabIndex = 12;
+            this.lblSpeciesInfo.Text = "label";
+            // 
             // btnDeleteAnimal
             // 
             this.btnDeleteAnimal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
@@ -248,15 +257,6 @@
             this.btnDeleteAnimal.Text = "Delete animal";
             this.btnDeleteAnimal.UseVisualStyleBackColor = false;
             this.btnDeleteAnimal.Click += new System.EventHandler(this.btnDeleteAnimal_Click);
-            // 
-            // lblSpeciesInfo
-            // 
-            this.lblSpeciesInfo.AutoSize = true;
-            this.lblSpeciesInfo.Location = new System.Drawing.Point(13, 22);
-            this.lblSpeciesInfo.Name = "lblSpeciesInfo";
-            this.lblSpeciesInfo.Size = new System.Drawing.Size(38, 17);
-            this.lblSpeciesInfo.TabIndex = 12;
-            this.lblSpeciesInfo.Text = "label";
             // 
             // lvAnimals
             // 
@@ -359,6 +359,7 @@
             this.btnStaff.TabIndex = 16;
             this.btnStaff.Text = "Staff";
             this.btnStaff.UseVisualStyleBackColor = false;
+            this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
             // 
             // MainForm
             // 

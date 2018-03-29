@@ -30,8 +30,7 @@ namespace Csharp2_assignment
             InitializeGui();
         }
 
-        #region Methods for user interface
-
+        #region User interface methods 
         /// <summary>
         /// Main method used to initialize user interface 
         /// </summary>
@@ -329,10 +328,14 @@ namespace Csharp2_assignment
             RecipeForm recipeFormObj = new RecipeForm();
             recipeFormObj.RecipeManager = recipeManagerObj; //give recipeFormObj access to recipeManagerObj
             DialogResult dialogResult = recipeFormObj.ShowDialog();
-            //if (dialogResult == DialogResult.OK)
-            //{
-            //    recipeObj = recipeObj.Recipe; //
-            //}
+        }
+
+        private void btnStaff_Click(object sender, EventArgs e)
+        {
+            //create an instance of StaffForm
+            StaffForm staffFormObj = new StaffForm();
+            DialogResult dialogResult = staffFormObj.ShowDialog();
+
         }
     }
 }

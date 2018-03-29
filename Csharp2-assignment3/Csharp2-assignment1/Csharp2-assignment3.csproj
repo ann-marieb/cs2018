@@ -53,6 +53,12 @@
     <Compile Include="Enums\MammalCategory.cs" />
     <Compile Include="Enums\BirdCategory.cs" />
     <Compile Include="Enums\AnimalCategory.cs" />
+    <Compile Include="Forms\StaffForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StaffForm.Designer.cs">
+      <DependentUpon>StaffForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Managers\AnimalManager.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Animals\Falcon.cs" />
@@ -60,10 +66,10 @@
     <Compile Include="Animals\IAnimal.cs" />
     <Compile Include="Managers\IListManager.cs" />
     <Compile Include="Managers\ListManager.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Animals\Bird.cs" />
@@ -73,14 +79,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Managers\RecipeManager.cs" />
     <Compile Include="Recipe.cs" />
-    <Compile Include="RecipeForm.cs">
+    <Compile Include="Forms\RecipeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecipeForm.Designer.cs">
+    <Compile Include="Forms\RecipeForm.Designer.cs">
       <DependentUpon>RecipeForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="MainForm.resx">
+    <Compile Include="Staff.cs" />
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StaffForm.resx">
+      <DependentUpon>StaffForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -91,7 +101,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="RecipeForm.resx">
+    <EmbeddedResource Include="Forms\RecipeForm.resx">
       <DependentUpon>RecipeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

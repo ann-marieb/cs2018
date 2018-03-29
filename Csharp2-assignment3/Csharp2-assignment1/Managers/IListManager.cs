@@ -24,6 +24,5 @@ namespace Csharp2_assignment
         List<string> ToStringList();
 
         string[] ToStringArray();
-
     }
 }
