@@ -16,6 +16,7 @@ namespace Csharp2_assignment
     public partial class StaffForm : Form
     {
         private Staff staffObj;
+        private ListManager<Staff> staffListObj; //declare received staffListObj
 
         /// <summary>
         /// default constructor
@@ -27,6 +28,19 @@ namespace Csharp2_assignment
             InitializeGui();
         }
 
+        /// <summary>
+        /// property for access to staffList
+        /// </summary>
+        public ListManager<Staff> StaffList
+        {
+            get => staffListObj;
+            set
+            {
+                staffListObj = value; //value = staffListObj from Mainform
+                UpdateStaffList(); // display staff list if there is one 
+            }
+        }
+        
         #region user interface methods
         /// <summary>
         /// initialize user interface
@@ -44,11 +58,11 @@ namespace Csharp2_assignment
         /// </summary>
         private void UpdateQualificationsList()
         {
-            lstQualifications.Items.Clear(); //clear ingredients list before writing new list
+            lstQualifications.Items.Clear(); //clear qualifications list before writing new list
             lstQualifications.Items.AddRange(staffObj.ToStringArray()); //write qualifications list
 
-            tbxQualification.Clear(); // Clear ingredient textbox to enable new input
-            tbxQualification.Focus(); //cursor back to ingredient textbox
+            tbxQualification.Clear(); // Clear qualifications textbox to enable new input
+            tbxQualification.Focus(); //cursor back to qualifications textbox
         }
 
         /// <summary>
@@ -57,10 +71,17 @@ namespace Csharp2_assignment
         private void UpdateStaffList()
         {
             lbxStaff.Items.Clear();
-            //lbxStaff.Items.AddRange(recipeManagerObj.ToStringArray());
+            lbxStaff.Items.AddRange(staffListObj.ToStringArray());
         }
         #endregion
 
+        #region button methods
+
+        /// <summary>
+        /// add qualification to qualifications list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddQual_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(tbxQualification.Text))
@@ -86,6 +107,11 @@ namespace Csharp2_assignment
             }
         }
 
+        /// <summary>
+        /// Add staff to staff list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddStaff_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(tbxStaffName.Text))
@@ -94,10 +120,11 @@ namespace Csharp2_assignment
                 return;
             }
             staffObj.StaffName = tbxStaffName.Text.Trim();
-            //recipeManagerObj.AddItem(recipeObj);
+            staffListObj.AddItem(staffObj); //add staff to staff lsit
             InitializeGui();
-            //lbxStaff.Items.AddRange(recipeManagerObj.ToStringArray());
+            UpdateStaffList();
             staffObj = new Staff(); //create new staffObj as type Staff
         }
+        #endregion
     }
 }

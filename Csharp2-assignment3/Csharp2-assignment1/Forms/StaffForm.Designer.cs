@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.gbxQualifications = new System.Windows.Forms.GroupBox();
             this.lstQualifications = new System.Windows.Forms.ListBox();
-            this.btnDeleteQual = new System.Windows.Forms.Button();
-            this.btnEditQual = new System.Windows.Forms.Button();
             this.btnAddQual = new System.Windows.Forms.Button();
             this.tbxQualification = new System.Windows.Forms.TextBox();
             this.lblIngredient = new System.Windows.Forms.Label();
@@ -48,8 +46,6 @@
             // gbxQualifications
             // 
             this.gbxQualifications.Controls.Add(this.lstQualifications);
-            this.gbxQualifications.Controls.Add(this.btnDeleteQual);
-            this.gbxQualifications.Controls.Add(this.btnEditQual);
             this.gbxQualifications.Controls.Add(this.btnAddQual);
             this.gbxQualifications.Controls.Add(this.tbxQualification);
             this.gbxQualifications.Controls.Add(this.lblIngredient);
@@ -69,24 +65,6 @@
             this.lstQualifications.Size = new System.Drawing.Size(347, 148);
             this.lstQualifications.TabIndex = 13;
             // 
-            // btnDeleteQual
-            // 
-            this.btnDeleteQual.Location = new System.Drawing.Point(29, 201);
-            this.btnDeleteQual.Name = "btnDeleteQual";
-            this.btnDeleteQual.Size = new System.Drawing.Size(81, 33);
-            this.btnDeleteQual.TabIndex = 12;
-            this.btnDeleteQual.Text = "Delete";
-            this.btnDeleteQual.UseVisualStyleBackColor = true;
-            // 
-            // btnEditQual
-            // 
-            this.btnEditQual.Location = new System.Drawing.Point(29, 145);
-            this.btnEditQual.Name = "btnEditQual";
-            this.btnEditQual.Size = new System.Drawing.Size(81, 33);
-            this.btnEditQual.TabIndex = 11;
-            this.btnEditQual.Text = "Update";
-            this.btnEditQual.UseVisualStyleBackColor = true;
-            // 
             // btnAddQual
             // 
             this.btnAddQual.Location = new System.Drawing.Point(29, 89);
@@ -103,6 +81,7 @@
             this.tbxQualification.Name = "tbxQualification";
             this.tbxQualification.Size = new System.Drawing.Size(355, 22);
             this.tbxQualification.TabIndex = 1;
+            this.tbxQualification.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxQualification_KeyPress);
             // 
             // lblIngredient
             // 
@@ -182,8 +161,6 @@
 
         private System.Windows.Forms.GroupBox gbxQualifications;
         private System.Windows.Forms.ListBox lstQualifications;
-        private System.Windows.Forms.Button btnDeleteQual;
-        private System.Windows.Forms.Button btnEditQual;
         private System.Windows.Forms.Button btnAddQual;
         private System.Windows.Forms.TextBox tbxQualification;
         private System.Windows.Forms.Label lblIngredient;

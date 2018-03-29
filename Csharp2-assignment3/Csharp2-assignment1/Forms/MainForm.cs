@@ -18,8 +18,11 @@ namespace Csharp2_assignment
     /// </summary>
     public partial class MainForm : Form
     {
+        #region fields
         private AnimalManager animalManagerObj = new AnimalManager(); //declare and create animalManagerObj as type AnimalManager
         private RecipeManager recipeManagerObj = new RecipeManager(); //declare and create recipeManagerObj as type RecipeManager
+        private ListManager<Staff> staffListObj = new ListManager<Staff>(); // declare and create staffListObj as type ListManager<Staff>
+        #endregion
 
         /// <summary>
         /// Default constructor
@@ -93,7 +96,6 @@ namespace Csharp2_assignment
             lvAnimals.Columns.Add("GENDER", 70, HorizontalAlignment.Center);
             lvAnimals.Columns.Add("SPECIAL CHARACTERISTICS", 250, HorizontalAlignment.Center);
         }
-        #endregion
         
         /// <summary>
         /// Update total list of animals.
@@ -109,6 +111,7 @@ namespace Csharp2_assignment
                 lvAnimals.Items.Add(row);
             }
         }
+        #endregion
 
         #region event handlers
         /// <summary>
@@ -330,10 +333,17 @@ namespace Csharp2_assignment
             DialogResult dialogResult = recipeFormObj.ShowDialog();
         }
 
+        /// <summary>
+        /// when button Staff is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStaff_Click(object sender, EventArgs e)
         {
             //create an instance of StaffForm
             StaffForm staffFormObj = new StaffForm();
+            staffFormObj.StaffList = staffListObj; //give recipeFormObj access to recipeManagerObj
+
             DialogResult dialogResult = staffFormObj.ShowDialog();
 
         }

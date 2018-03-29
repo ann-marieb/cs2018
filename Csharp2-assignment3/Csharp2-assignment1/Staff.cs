@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Csharp2_assignment
 {
-    class Staff
+    public class Staff
     {
         private string staffName;
         private IListManager<string> qualificationsList;
@@ -22,6 +22,9 @@ namespace Csharp2_assignment
             qualificationsList = new ListManager<string>();
         }
 
+        /// <summary>
+        /// property
+        /// </summary>
         public string StaffName
         {
             get { return staffName; }
@@ -32,6 +35,15 @@ namespace Csharp2_assignment
         }
 
         /// <summary>
+        /// add a qualification to qualifications list
+        /// </summary>
+        /// <param name="item"></param>
+        internal void AddQualification(string item)
+        {
+            qualificationsList.AddItem(item);
+        }
+
+        /// <summary>
         /// return qualifications list as string array
         /// </summary>
         public string[] ToStringArray()
@@ -39,9 +51,13 @@ namespace Csharp2_assignment
             return qualificationsList.ToStringArray();
         }
 
-        internal void AddQualification(string item)
+        /// <summary>
+        /// return a staff as a string.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
         {
-            qualificationsList.AddItem(item);
+            return StaffName + ": " + string.Join(", ", (ListManager<string>)qualificationsList) + ".";
         }
     }
 }

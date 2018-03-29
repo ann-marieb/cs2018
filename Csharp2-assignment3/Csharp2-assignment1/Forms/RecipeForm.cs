@@ -157,7 +157,7 @@ namespace Csharp2_assignment
             recipeObj.RecipeName = tbxRecipeName.Text.Trim();
             recipeManagerObj.AddItem(recipeObj);
             InitializeGui();
-            lbxRecipes.Items.AddRange(recipeManagerObj.ToStringArray());
+            UpdateRecipeList();
             recipeObj = new Recipe(); //create new recipeObj as type Recipe
 
         }
