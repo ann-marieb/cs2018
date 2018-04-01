@@ -1,0 +1,83 @@
+﻿/// BinSerialize.cs
+/// Ann-Marie Bergström  ai2436 2018
+ 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Csharp2_assignment
+{
+    public class BinSerialize
+    {
+        /// <summary>
+        /// Method to serialize object.
+        /// </summary>
+        /// <param name="obj"> Object to be serialized.</param>
+        /// <param name="filePath">File path including the name of the file to be serialized.</param>
+        public static bool Serialize(string filePath, object obj)
+        {
+            bool bOK = true;
+            FileStream fileObj = null; //declare fileObj as type FileStream, set to null
+            try
+            {
+                //Steps in serializing an object
+                fileObj = new FileStream(filePath, FileMode.Create); //create fileObj
+                BinaryFormatter binFormatter = new BinaryFormatter(); //declare and create binFormatter as type BinaryFormatter
+                binFormatter.Serialize(fileObj, obj); // serialize and save obj in fileObj
+            }
+            catch
+            {
+                bOK = false;
+            }
+            finally
+            {
+                if (fileObj != null)
+                    fileObj.Close();
+
+            }
+            return bOK;
+        }
+
+        /// <summary>
+        /// Method to deserializing object.
+        /// </summary>
+        /// <typeparam name="T"> Any object</typeparam>
+        /// <param name="filePath">File path including the name of the file to be deserialized</param>
+        public static T Deserialize<T>(string filePath)
+        {
+            FileStream fileObj = null;
+            object obj = null;
+
+            try
+            {
+                if (!File.Exists(filePath))
+                {
+                    throw new FileNotFoundException("The file is not found. ", filePath); //create object
+                }
+
+                fileObj = new FileStream(filePath, FileMode.Open); //create fileObj and fill
+
+                BinaryFormatter binFormatter = new BinaryFormatter(); //declare and create binFormatter as type BinaryFormatter
+                obj = binFormatter.Deserialize(fileObj); //save object
+            }
+            //catch (FileNotFoundException ex)
+            //{
+            //    MessageBox.Show(ex.FileName + " -" + ex.Message);// TODO flytta!
+            //}
+            finally
+            {
+                if (fileObj != null)
+                {
+                    fileObj.Close();
+                }
+            }
+
+            return (T)obj;
+        }
+
+    }
+}
