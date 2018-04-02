@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Csharp2_assignment
 {
+    [Serializable]
     public abstract class Mammal : Animal
     {
         private string noOfTeeth;

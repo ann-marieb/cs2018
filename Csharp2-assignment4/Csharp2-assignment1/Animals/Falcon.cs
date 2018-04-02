@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Csharp2_assignment
 {
+    [Serializable]
     public class Falcon : Bird
     {
         private string flyingSpeed;

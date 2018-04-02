@@ -25,9 +25,9 @@ namespace Csharp2_assignment
 
         string[] ToStringArray();
 
-        bool BinarySerialize(string fileName);
+        void BinarySerialize(string fileName);
 
-        bool BinaryDeSerialize(string fileName);
+        void BinaryDeSerialize(string fileName);
 
         bool XMLSerialize(string fileName);
 

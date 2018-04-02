@@ -14,8 +14,6 @@ namespace Csharp2_assignment
     {
         private List<T> itemList; //declare list of items
 
-        //public int Count { get; }
-
         /// <summary>
         /// default constructor
         /// </summary>
@@ -64,7 +62,7 @@ namespace Csharp2_assignment
         }
 
         /// <summary>
-        /// Delete the item at the given index in the list of items.
+        /// Remove the item at the given index in the list of items.
         /// </summary>
         /// <param name="index"></param>
         public bool RemoveItem(int index)
@@ -77,6 +75,13 @@ namespace Csharp2_assignment
             else return false;
         }
 
+        /// <summary>
+        /// clear list
+        /// </summary>
+        public void ClearList()
+        {
+            itemList.Clear();
+        }
         #region support functions
         /// <summary>
         /// Check if index is valid.
@@ -121,13 +126,15 @@ namespace Csharp2_assignment
         #endregion
 
 
-        public bool BinarySerialize(string fileName)
+        public void BinarySerialize(string binFileName)
         {
-            return BinSerialize.Serialize(fileName, itemList);
+            BinSerialize.Serialize(binFileName, itemList);
         }
 
-        public bool BinaryDeSerialize(string fileName)
-        { throw new NotImplementedException(); }
+        public void BinaryDeSerialize(string binFileName)
+        {
+            itemList = BinSerialize.DeSerialize <List<T>>(binFileName);
+        }
 
         public bool XMLSerialize(string fileName)
         { throw new NotImplementedException(); }

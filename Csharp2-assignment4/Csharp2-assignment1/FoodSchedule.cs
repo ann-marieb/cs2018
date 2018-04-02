@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Csharp2_assignment
 {
+    [Serializable]
     public class FoodSchedule
     {
 

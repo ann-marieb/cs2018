@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,6 +24,7 @@ namespace Csharp2_assignment
         private RecipeManager recipeManagerObj = new RecipeManager(); //declare and create recipeManagerObj as type RecipeManager
         private ListManager<Staff> staffListObj = new ListManager<Staff>(); // declare and create staffListObj as type ListManager<Staff>
         private string binFileName;  //file to save list to
+        private bool animalListChangedButNotSaved = false;
         #endregion
 
         /// <summary>
@@ -111,10 +113,11 @@ namespace Csharp2_assignment
                 // and add it to the ListView
                 lvAnimals.Items.Add(row);
             }
+            animalListChangedButNotSaved = true;
         }
         #endregion
 
-        #region event handlers
+        #region animal event handlers
         /// <summary>
         /// When Animal Category is selected display groupbox for category specific info.
         /// </summary>
@@ -214,7 +217,12 @@ namespace Csharp2_assignment
                 }
             }
         }
-
+        
+        /// <summary>
+        /// delete animal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDeleteAnimal_Click(object sender, EventArgs e)
         {
             var indices = lvAnimals.SelectedIndices;
@@ -234,6 +242,7 @@ namespace Csharp2_assignment
             }
         }
 
+        #region animal sort event handlers
         /// <summary>
         /// Sort animals based on species
         /// </summary>
@@ -266,6 +275,7 @@ namespace Csharp2_assignment
             animalManagerObj.Sort(new CompareByName());
             UpdateAnimalList();
         }
+        #endregion
 
         /// <summary>
         /// Create example animals to enable testing
@@ -321,6 +331,7 @@ namespace Csharp2_assignment
 
         #endregion
 
+        #region recipes and staff event handlers
         /// <summary>
         /// When button Recipes is selected
         /// </summary>
@@ -348,23 +359,47 @@ namespace Csharp2_assignment
             DialogResult dialogResult = staffFormObj.ShowDialog();
 
         }
+        #endregion
 
-        #region File
+        #region file handling
+        /// <summary>
+        /// initialize the animal part of the program
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mnuFileNew_Click(object sender, EventArgs e)
         {
-            InitializeGui();
+
+            DialogResult result = DialogResult.OK;
+            if (animalListChangedButNotSaved)
+            {
+                //ask if it is ok that unsavedanimal list will be lost
+                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                result = MessageBox.Show("Current animal list has not been saved and will be lost?",
+                    "Confirmation", buttons);
+            }
+
+            if (result == DialogResult.OK)
+            {
+                InitializeGui();
+                lvAnimals.Items.Clear();
+                animalManagerObj.ClearList();
+                animalListChangedButNotSaved = false;
+            }
         }
 
+        /// <summary>
+        /// open file to display saved animal list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mnuFileOpen_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string fileName = openFileDialog1.FileName;
-                Animal animal = BinSerialize.Deserialize<Animal>(fileName);
-                if (animal != null)
-                { } // TODO 
-                else
-                { }  //TODO
+                binFileName = openFileDialog1.FileName;
+                ReadBinaryFile();
+                UpdateAnimalList();
             }
         }
 
@@ -383,6 +418,11 @@ namespace Csharp2_assignment
                 SaveToBinaryFile();
         }
 
+        /// <summary>
+        /// save new file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mnuFileSaveAs_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -392,23 +432,48 @@ namespace Csharp2_assignment
             }
         }
 
+        /// <summary>
+        /// save the animal list to file
+        /// </summary>
         private void SaveToBinaryFile()
         {
-            var message = "";
+            string message = "";
 
             try
             {
-                animalManagerObj.BinarySerialize(binFileName);
-               // _animalManagerChanged = false;
+               animalManagerObj.BinarySerialize(binFileName);
+               animalListChangedButNotSaved = false; //animal list has been saved
             }
             catch (Exception e)
             {
-                message = e.Message;
+                message = e.Message; //error message
             }
 
             if (!string.IsNullOrEmpty(message))
             {
-                MessageBox.Show(message);
+                MessageBox.Show(message); //write error message
+            }
+        }
+
+        /// <summary>
+        /// Read the animal list from a binary file.
+        /// </summary>
+        private void ReadBinaryFile()
+        {
+            string message = "";
+
+            try
+            {
+                animalManagerObj.BinaryDeSerialize(binFileName);
+            }
+            catch (Exception e)
+            {
+                message = e.Message; //error message
+            }
+
+            if (!string.IsNullOrEmpty(message))
+            {
+                MessageBox.Show(message); //write error message
             }
         }
         #endregion

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Csharp2_assignment
 {
+    [Serializable]
     public abstract class Bird : Animal
     {
         private string wingSpan;

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Csharp2_assignment
 {
+    [Serializable]
     class Parrot : Bird
     {
         private string colour;
