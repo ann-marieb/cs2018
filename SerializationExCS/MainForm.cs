@@ -21,6 +21,7 @@ namespace SerializationExProjCS
 
         }
 
+        // plats för lagring och filnamn
         private string fileName= Application.StartupPath + "\\TestPerson.dat";  //file at Application directory
         private string xmlFileName= Application.StartupPath + "\\TestPerson.xml";  //(file for testing xml
 
@@ -122,7 +123,8 @@ namespace SerializationExProjCS
     private void btnXMLSerialize_Click(object sender, EventArgs e)
     {
         Person pers = new Person(txtFirstName.Text, txtLastName.Text);
-        string strMessage = string.Format("{0} is saved on disk at {1}.{2}{2}{2}You can now exit the application!", pers.FullName, fileName, Environment.NewLine);
+        string strMessage = string.Format("{0} is saved on disk at {1}.{2}{2}{2}You can now exit the application!", 
+            pers.FullName, fileName, Environment.NewLine);
 
         if (!XMLSerialization.SerializeToFile<Person>(xmlFileName, pers)) 
         {

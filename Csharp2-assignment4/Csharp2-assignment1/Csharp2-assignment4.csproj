@@ -49,7 +49,7 @@
     <Compile Include="AnimalMaker.cs" />
     <Compile Include="Animals\Cat.cs" />
     <Compile Include="Animals\Dog.cs" />
-    <Compile Include="BinSerialize.cs" />
+    <Compile Include="BinSerializer.cs" />
     <Compile Include="Enums\EaterType.cs" />
     <Compile Include="Enums\MammalCategory.cs" />
     <Compile Include="Enums\BirdCategory.cs" />
@@ -87,6 +87,7 @@
       <DependentUpon>RecipeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Staff.cs" />
+    <Compile Include="XMLSerializer.cs" />
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

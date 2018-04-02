@@ -26,13 +26,13 @@ namespace SerializationExProjCS
         public static bool Serialize(object obj, string filePath)
         {
             bool bOK = true;
-            FileStream fileObj = null;
+            FileStream fileObj = null; //declare fileObj as type FileStream, set to null
             try
             {
                 //Steps in serializing an object
-                fileObj = new FileStream(filePath, FileMode.Create);
-                BinaryFormatter binFormatter = new BinaryFormatter();
-                binFormatter.Serialize(fileObj, obj);
+                fileObj = new FileStream(filePath, FileMode.Create); //create fileObj
+                BinaryFormatter binFormatter = new BinaryFormatter(); //declare and create binFormatter as type BinaryFormatter
+                binFormatter.Serialize(fileObj, obj); // serialize and save obj in fileObj
             }
             catch //no parameter - catch avoids exception throwing but no action is taken here 
             {
@@ -64,13 +64,13 @@ namespace SerializationExProjCS
             {
                 if (!File.Exists(filepath))
                 {
-                    throw new FileNotFoundException("The file is not found. ", filepath);
+                    throw new FileNotFoundException("The file is not found. ", filepath); //create object
                 }
 
-                fileObj = new FileStream(filepath, FileMode.Open);
+                fileObj = new FileStream(filepath, FileMode.Open); //create fileObj and fill
 
-                BinaryFormatter binFormatter = new BinaryFormatter();
-                obj = binFormatter.Deserialize(fileObj);
+                BinaryFormatter binFormatter = new BinaryFormatter(); //declare and create binFormatter as type BinaryFormatter
+                obj = binFormatter.Deserialize(fileObj); //save object
             }
             catch (FileNotFoundException ex)
             {

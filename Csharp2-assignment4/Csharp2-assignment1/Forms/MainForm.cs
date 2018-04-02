@@ -24,6 +24,8 @@ namespace Csharp2_assignment
         private RecipeManager recipeManagerObj = new RecipeManager(); //declare and create recipeManagerObj as type RecipeManager
         private ListManager<Staff> staffListObj = new ListManager<Staff>(); // declare and create staffListObj as type ListManager<Staff>
         private string binFileName;  //file to save list to
+        private string xmlFileName;  //file to save list to
+
         private bool animalListChangedButNotSaved = false;
         #endregion
 
@@ -373,7 +375,7 @@ namespace Csharp2_assignment
             DialogResult result = DialogResult.OK;
             if (animalListChangedButNotSaved)
             {
-                //ask if it is ok that unsavedanimal list will be lost
+                //ask if it is ok that unsaved animal list will be lost
                 MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
                 result = MessageBox.Show("Current animal list has not been saved and will be lost?",
                     "Confirmation", buttons);
@@ -395,12 +397,12 @@ namespace Csharp2_assignment
         /// <param name="e"></param>
         private void mnuFileOpen_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                binFileName = openFileDialog1.FileName;
-                ReadBinaryFile();
-                UpdateAnimalList();
-            }
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    binFileName = openFileDialog.FileName;
+                    ReadBinaryFile();
+                    UpdateAnimalList();
+                } 
         }
 
         /// <summary>
@@ -425,11 +427,11 @@ namespace Csharp2_assignment
         /// <param name="e"></param>
         private void mnuFileSaveAs_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                binFileName = saveFileDialog1.FileName;
-                SaveToBinaryFile();
-            }
+                if (saveBinFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    binFileName = saveBinFileDialog.FileName;
+                    SaveToBinaryFile();
+                }
         }
 
         /// <summary>
@@ -437,22 +439,17 @@ namespace Csharp2_assignment
         /// </summary>
         private void SaveToBinaryFile()
         {
-            string message = "";
+                try
+                {
+                    animalManagerObj.BinarySerialize(binFileName);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message); //write message
+                }
 
-            try
-            {
-               animalManagerObj.BinarySerialize(binFileName);
-               animalListChangedButNotSaved = false; //animal list has been saved
-            }
-            catch (Exception e)
-            {
-                message = e.Message; //error message
-            }
-
-            if (!string.IsNullOrEmpty(message))
-            {
-                MessageBox.Show(message); //write error message
-            }
+                animalListChangedButNotSaved = false; //animal list has been saved
+                MessageBox.Show("Animal list has been saved to file"); //write message
         }
 
         /// <summary>
@@ -460,21 +457,63 @@ namespace Csharp2_assignment
         /// </summary>
         private void ReadBinaryFile()
         {
-            string message = "";
-
             try
             {
                 animalManagerObj.BinaryDeSerialize(binFileName);
             }
             catch (Exception e)
             {
-                message = e.Message; //error message
+                MessageBox.Show(e.Message); //write message
             }
 
-            if (!string.IsNullOrEmpty(message))
+            MessageBox.Show("Animal list has been opened"); //write message
+        }
+
+
+        private void mnuFileExportXML_Click(object sender, EventArgs e)
+        {
+            if (saveXMLFileDialog.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(message); //write error message
+                xmlFileName = saveXMLFileDialog.FileName;
+                SaveToXMLFile();
             }
+        }
+
+        private void SaveToXMLFile()
+        {
+            try
+            {
+                recipeManagerObj.XMLSerialize(xmlFileName);
+                MessageBox.Show("Recipe list has been saved to file"); //write message
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString()); //write message
+            }
+        }
+
+        private void mnuFileImportXML_Click(object sender, EventArgs e)
+        {
+            if (openXMLFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                xmlFileName = openXMLFileDialog.FileName;
+                ReadfromFile();
+                //update recipes
+            }
+        }
+
+        private void ReadfromFile()
+        {
+            try
+            {
+                recipeManagerObj.XMLDeSerialize(xmlFileName);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message); //write message
+            }
+
+            MessageBox.Show("Recipe list has been opened"); //write message
         }
         #endregion
     }

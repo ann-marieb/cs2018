@@ -65,11 +65,13 @@
             this.mnuFileSave = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importFromXMLFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToXMLFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileExportXML = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileImportXML = new System.Windows.Forms.ToolStripMenuItem();
             this.exitAltXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveBinFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.saveXMLFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openXMLFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.gbxAnimalCategory.SuspendLayout();
             this.gbxSpecies.SuspendLayout();
@@ -432,23 +434,25 @@
             // xMLToolStripMenuItem
             // 
             this.xMLToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importFromXMLFileToolStripMenuItem,
-            this.exportToXMLFileToolStripMenuItem});
+            this.mnuFileExportXML,
+            this.mnuFileImportXML});
             this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
             this.xMLToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.xMLToolStripMenuItem.Text = "XML";
             // 
-            // importFromXMLFileToolStripMenuItem
+            // mnuFileExportXML
             // 
-            this.importFromXMLFileToolStripMenuItem.Name = "importFromXMLFileToolStripMenuItem";
-            this.importFromXMLFileToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
-            this.importFromXMLFileToolStripMenuItem.Text = "Import from XML file";
+            this.mnuFileExportXML.Name = "mnuFileExportXML";
+            this.mnuFileExportXML.Size = new System.Drawing.Size(223, 26);
+            this.mnuFileExportXML.Text = "Export to XML file";
+            this.mnuFileExportXML.Click += new System.EventHandler(this.mnuFileExportXML_Click);
             // 
-            // exportToXMLFileToolStripMenuItem
+            // mnuFileImportXML
             // 
-            this.exportToXMLFileToolStripMenuItem.Name = "exportToXMLFileToolStripMenuItem";
-            this.exportToXMLFileToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
-            this.exportToXMLFileToolStripMenuItem.Text = "Export to XML file";
+            this.mnuFileImportXML.Name = "mnuFileImportXML";
+            this.mnuFileImportXML.Size = new System.Drawing.Size(223, 26);
+            this.mnuFileImportXML.Text = "Import from XML file";
+            this.mnuFileImportXML.Click += new System.EventHandler(this.mnuFileImportXML_Click);
             // 
             // exitAltXToolStripMenuItem
             // 
@@ -457,14 +461,23 @@
             this.exitAltXToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.exitAltXToolStripMenuItem.Text = "Exit";
             // 
-            // openFileDialog1
+            // openFileDialog
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "Binary file|*.bin|All files|*.*";
+            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.Filter = "Binary file|*.bin|All files|*.*";
             // 
-            // saveFileDialog1
+            // saveBinFileDialog
             // 
-            this.saveFileDialog1.Filter = "Binary file|*.bin";
+            this.saveBinFileDialog.Filter = "Binary file|*.bin";
+            // 
+            // saveXMLFileDialog
+            // 
+            this.saveXMLFileDialog.Filter = "XML file|*.xml";
+            // 
+            // openXMLFileDialog
+            // 
+            this.openXMLFileDialog.FileName = "openXMLFileDialog";
+            this.openXMLFileDialog.Filter = "XML file|*.xml|All files|*.*";
             // 
             // MainForm
             // 
@@ -541,10 +554,12 @@
         private System.Windows.Forms.ToolStripMenuItem mnuFileSaveAs;
         private System.Windows.Forms.ToolStripMenuItem xMLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitAltXToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importFromXMLFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportToXMLFileToolStripMenuItem;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileExportXML;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileImportXML;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveBinFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveXMLFileDialog;
+        private System.Windows.Forms.OpenFileDialog openXMLFileDialog;
     }
 }
 

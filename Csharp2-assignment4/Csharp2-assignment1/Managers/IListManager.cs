@@ -29,9 +29,9 @@ namespace Csharp2_assignment
 
         void BinaryDeSerialize(string fileName);
 
-        bool XMLSerialize(string fileName);
+        void XMLSerialize(string fileName);
 
-        bool XMLDeSerialize(string fileName);
+        void XMLDeSerialize(string fileName);
 
     }
 }

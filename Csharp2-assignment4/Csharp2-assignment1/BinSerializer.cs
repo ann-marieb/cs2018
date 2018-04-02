@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Csharp2_assignment
 {
-    public class BinSerialize
+    public class BinSerializer
     {
         /// <summary>
         /// Method to serialize object.
@@ -20,7 +20,6 @@ namespace Csharp2_assignment
         /// <param name="filePath">File path including the name of the file to be serialized.</param>
         public static void Serialize(string filePath, object obj)
         {
-            //bool bOK = true;
             FileStream fileObj = null; //declare fileObj as type FileStream, set to null
             try
             {
@@ -28,16 +27,11 @@ namespace Csharp2_assignment
                 BinaryFormatter binFormatter = new BinaryFormatter(); //declare and create binFormatter as type BinaryFormatter
                 binFormatter.Serialize(fileObj, obj); // serialize and save obj in fileObj
             }
-            //catch
-            //{
-            //    bOK = false;
-            //}
             finally
             {
                 if (fileObj != null)
                     fileObj.Close();
             }
-            //return bOK;
         }
 
         /// <summary>

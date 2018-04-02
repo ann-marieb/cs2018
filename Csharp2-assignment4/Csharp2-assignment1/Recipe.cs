@@ -11,9 +11,9 @@ namespace Csharp2_assignment
 {
     public class Recipe
     {
-        private IListManager<string> ingredientsList = new ListManager<string>();
+        private List<string> ingredientsList = new List<string>();
 
-        public string RecipeName { get; internal set; }
+        public string RecipeName { get; set; }
 
         /// <summary>
         /// default constructor
@@ -28,7 +28,7 @@ namespace Csharp2_assignment
         /// </summary>
         public void AddIngredient(string item)
         {
-            ingredientsList.AddItem(item);
+            ingredientsList.Add(item);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Csharp2_assignment
         /// </summary>
         public string GetIngredientAt(int index)
         {
-            return (ingredientsList.GetItem(index));
+            return (ingredientsList[index]);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Csharp2_assignment
         /// <returns></returns>
         public void ChangeIngredientAt(int index, string value)
         {
-            ingredientsList.ChangeItem(index, value);
+            ingredientsList[index] = value;
         }
 
         /// <summary>
@@ -55,12 +55,12 @@ namespace Csharp2_assignment
         /// </summary>
         public void DeleteIngredientAt(int index)
         {
-            ingredientsList.RemoveItem(index);
+            ingredientsList.RemoveAt(index);
         }
 
         public override string ToString()
         {
-            var ingredients = string.Join(", ", ingredientsList.ToStringList());
+            var ingredients = string.Join(", ", ToStringArray());
             return RecipeName + ": " + ingredients + ".";
         }
 
@@ -69,7 +69,12 @@ namespace Csharp2_assignment
         /// </summary>
         public string[] ToStringArray()
         {
-            return ingredientsList.ToStringArray();
+            List<string> strings = new List<string>();
+            foreach (var item in ingredientsList)
+            {
+                strings.Add(item);
+            }
+            return strings.ToArray();
         }
     }
 }

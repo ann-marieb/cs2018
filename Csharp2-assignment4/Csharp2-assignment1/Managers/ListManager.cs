@@ -22,6 +22,7 @@ namespace Csharp2_assignment
             itemList = new List<T>(); //create list of items
         }
 
+        #region list funtions
         /// <summary>
         /// Add item to list
         /// </summary>
@@ -124,23 +125,28 @@ namespace Csharp2_assignment
             return ToStringList().ToArray();
         }
         #endregion
+        #endregion
 
-
+        #region serialize functions
         public void BinarySerialize(string binFileName)
         {
-            BinSerialize.Serialize(binFileName, itemList);
+            BinSerializer.Serialize(binFileName, itemList);
         }
 
         public void BinaryDeSerialize(string binFileName)
         {
-            itemList = BinSerialize.DeSerialize <List<T>>(binFileName);
+            itemList = BinSerializer.DeSerialize <List<T>>(binFileName);
         }
 
-        public bool XMLSerialize(string fileName)
-        { throw new NotImplementedException(); }
+        public void XMLSerialize(string xmlFileName)
+        {
+            XMLSerializer.Serialize<List<T>>(xmlFileName, itemList);
+        }
 
-        public bool XMLDeSerialize(string fileName)
-        { throw new NotImplementedException(); }
-
+        public void XMLDeSerialize(string xmlFileName)
+        {
+            itemList = XMLSerializer.DeSerialize<List<T>>(xmlFileName);
+        }
+        #endregion
     }
 }
