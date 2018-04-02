@@ -14,7 +14,7 @@ namespace Csharp2_assignment
     public class BinSerializer
     {
         /// <summary>
-        /// Method to serialize object.
+        /// serialize object
         /// </summary>
         /// <param name="obj"> Object to be serialized.</param>
         /// <param name="filePath">File path including the name of the file to be serialized.</param>
@@ -35,7 +35,7 @@ namespace Csharp2_assignment
         }
 
         /// <summary>
-        /// Method to deserialize object.
+        /// deserialize object.
         /// </summary>
         /// <typeparam name="T"> Any object</typeparam>
         /// <param name="filePath">File path including the name of the file to be deserialized</param>

@@ -29,7 +29,7 @@ namespace Csharp2_assignment
             }
         }
 
-        internal static T DeSerialize<T>(string xmlFileName)
+        public static T DeSerialize<T>(string xmlFileName)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(T));
             object obj = null;

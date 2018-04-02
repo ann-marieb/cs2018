@@ -26,7 +26,7 @@ namespace Csharp2_assignment
         private string binFileName;  //file to save list to
         private string xmlFileName;  //file to save list to
 
-        private bool animalListChangedButNotSaved = false;
+        private bool animalListChangedButNotSaved = false; //flag
         #endregion
 
         /// <summary>
@@ -371,7 +371,6 @@ namespace Csharp2_assignment
         /// <param name="e"></param>
         private void mnuFileNew_Click(object sender, EventArgs e)
         {
-
             DialogResult result = DialogResult.OK;
             if (animalListChangedButNotSaved)
             {
@@ -442,14 +441,14 @@ namespace Csharp2_assignment
                 try
                 {
                     animalManagerObj.BinarySerialize(binFileName);
+                    animalListChangedButNotSaved = false; //animal list has been saved
+                    MessageBox.Show("Animal list has been saved to file."); //write message
+
                 }
                 catch (Exception e)
-                {
-                    MessageBox.Show(e.Message); //write message
-                }
-
-                animalListChangedButNotSaved = false; //animal list has been saved
-                MessageBox.Show("Animal list has been saved to file"); //write message
+                    {
+                        MessageBox.Show(e.Message); //write message
+                    }
         }
 
         /// <summary>
@@ -460,16 +459,20 @@ namespace Csharp2_assignment
             try
             {
                 animalManagerObj.BinaryDeSerialize(binFileName);
+                MessageBox.Show("Animal list has been read."); //write message
+
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message); //write message
             }
-
-            MessageBox.Show("Animal list has been opened"); //write message
         }
 
-
+        /// <summary>
+        /// export recipe list to XML file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mnuFileExportXML_Click(object sender, EventArgs e)
         {
             if (saveXMLFileDialog.ShowDialog() == DialogResult.OK)
@@ -479,6 +482,9 @@ namespace Csharp2_assignment
             }
         }
 
+        /// <summary>
+        /// save recipe list to XML file
+        /// </summary>
         private void SaveToXMLFile()
         {
             try
@@ -488,33 +494,44 @@ namespace Csharp2_assignment
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString()); //write message
+                MessageBox.Show(e.Message); //write message
             }
         }
 
+        /// <summary>
+        /// import recipe list from XML file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mnuFileImportXML_Click(object sender, EventArgs e)
         {
             if (openXMLFileDialog.ShowDialog() == DialogResult.OK)
             {
                 xmlFileName = openXMLFileDialog.FileName;
-                ReadfromFile();
-                //update recipes
+                ReadfromXMLFile();
             }
         }
 
-        private void ReadfromFile()
+        /// <summary>
+        /// read recipe list from XML file
+        /// </summary>
+        private void ReadfromXMLFile()
         {
             try
             {
                 recipeManagerObj.XMLDeSerialize(xmlFileName);
+                MessageBox.Show("Recipe list has been read"); //write message
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message); //write message
             }
-
-            MessageBox.Show("Recipe list has been opened"); //write message
         }
         #endregion
+
+        private void mnuFileExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -67,7 +67,7 @@
             this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileExportXML = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileImportXML = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitAltXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveBinFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.saveXMLFileDialog = new System.Windows.Forms.SaveFileDialog();
@@ -395,7 +395,7 @@
             this.mnuFileSave,
             this.mnuFileSaveAs,
             this.xMLToolStripMenuItem,
-            this.exitAltXToolStripMenuItem});
+            this.mnuFileExit});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.menuToolStripMenuItem.Text = "File";
@@ -454,12 +454,13 @@
             this.mnuFileImportXML.Text = "Import from XML file";
             this.mnuFileImportXML.Click += new System.EventHandler(this.mnuFileImportXML_Click);
             // 
-            // exitAltXToolStripMenuItem
+            // mnuFileExit
             // 
-            this.exitAltXToolStripMenuItem.Name = "exitAltXToolStripMenuItem";
-            this.exitAltXToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
-            this.exitAltXToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.exitAltXToolStripMenuItem.Text = "Exit";
+            this.mnuFileExit.Name = "mnuFileExit";
+            this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
+            this.mnuFileExit.Size = new System.Drawing.Size(181, 26);
+            this.mnuFileExit.Text = "Exit";
+            this.mnuFileExit.Click += new System.EventHandler(this.mnuFileExit_Click);
             // 
             // openFileDialog
             // 
@@ -553,7 +554,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuFileSave;
         private System.Windows.Forms.ToolStripMenuItem mnuFileSaveAs;
         private System.Windows.Forms.ToolStripMenuItem xMLToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitAltXToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileExit;
         private System.Windows.Forms.ToolStripMenuItem mnuFileExportXML;
         private System.Windows.Forms.ToolStripMenuItem mnuFileImportXML;
         private System.Windows.Forms.OpenFileDialog openFileDialog;

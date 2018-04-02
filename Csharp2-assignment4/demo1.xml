@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfRecipe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Recipe>
+    <RecipeName>Dog food</RecipeName>
+    <Ingredients>
+      <string>meat</string>
+      <string>milk</string>
+    </Ingredients>
+  </Recipe>
+  <Recipe>
+    <RecipeName>Cat food</RecipeName>
+    <Ingredients>
+      <string>mouse</string>
+    </Ingredients>
+  </Recipe>
+</ArrayOfRecipe>

@@ -15,6 +15,8 @@ namespace Csharp2_assignment
 
         public string RecipeName { get; set; }
 
+         public List<string> Ingredients => ingredientsList;
+
         /// <summary>
         /// default constructor
         /// </summary>
@@ -44,7 +46,6 @@ namespace Csharp2_assignment
         /// </summary>
         /// <param name="index"></param>
         /// <param name="value"></param>
-        /// <returns></returns>
         public void ChangeIngredientAt(int index, string value)
         {
             ingredientsList[index] = value;

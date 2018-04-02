@@ -83,6 +83,8 @@ namespace Csharp2_assignment
         {
             itemList.Clear();
         }
+        #endregion
+
         #region support functions
         /// <summary>
         /// Check if index is valid.
@@ -124,7 +126,6 @@ namespace Csharp2_assignment
         {
             return ToStringList().ToArray();
         }
-        #endregion
         #endregion
 
         #region serialize functions
