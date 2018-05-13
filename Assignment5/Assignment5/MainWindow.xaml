@@ -1,0 +1,25 @@
+﻿<Window x:Class="Assignment5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assignment5"
+        mc:Ignorable="d"
+        Title="Control Tower Window" Height="350" Width="402.052">
+    <Grid Margin="0,0,0,0">
+        <ListView x:Name="Flights" HorizontalAlignment="Left" Height="200" Margin="16,10,0,0" VerticalAlignment="Top" Width="365">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Flight" DisplayMemberBinding="{Binding FlightNumber}" Width="70"/>
+                    <GridViewColumn Header="Action" DisplayMemberBinding="{Binding FlightAction}" Width="140"/>
+                    <GridViewColumn Header="Time" DisplayMemberBinding="{Binding DateTime}" Width="140"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Next flight:" HorizontalAlignment="Left" Margin="16,246,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtFlightNumber" HorizontalAlignment="Left" Height="23" Margin="90,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtFlightNumber_TextChanged"/>
+        <Button x:Name="btnSend" Content="Send to runway" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"  Height="23" Margin="278,246,0,0" Click="btnSend_Click"/>
+        <Label Content="DL-Delta, DY-Norwegian, KL-KLM, QR-Qatar, SQ-Singapore" HorizontalAlignment="Left" Margin="58,270,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
